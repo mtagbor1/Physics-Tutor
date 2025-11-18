@@ -13,8 +13,8 @@ import { PersonaSelector } from './components/common/PersonaSelector';
 import { Tab, Persona } from './constants';
 
 const App: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<Tab>(Tab.Define);
-  const [persona, setPersona] = useState<Persona>(Persona.Tutor);
+  const [activeTab, setActiveTab] = useState<Tab>(Tab.Explain);
+  const [persona, setPersona] = useState<Persona>(Persona.Expert);
 
   const renderContent = () => {
     const props = { persona };
@@ -34,7 +34,7 @@ const App: React.FC = () => {
       case Tab.Saved:
         return <SavedItemsViewer />;
       default:
-        return <DefineTerm {...props} />;
+        return <TopicExplainer {...props} />;
     }
   };
 
@@ -52,7 +52,7 @@ const App: React.FC = () => {
           {renderContent()}
         </main>
         <footer className="text-center mt-12 text-gray-500 text-sm">
-          <p>Powered by Google Gemini API. For educational purposes only.</p>
+          <p>Developed by Mike Tagbor.</p>
         </footer>
       </div>
     </div>

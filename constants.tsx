@@ -50,6 +50,13 @@ export const StopCircleIcon = (props: React.SVGProps<SVGSVGElement>) => (
     </svg>
 );
 
+export const MicrophoneIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <path d="M8.25 4.5a3.75 3.75 0 117.5 0v8.25a3.75 3.75 0 11-7.5 0V4.5z" />
+      <path d="M6 10.5a.75.75 0 01.75.75v.75a4.5 4.5 0 009 0v-.75a.75.75 0 011.5 0v.75a6 6 0 11-12 0v-.75A.75.75 0 016 10.5z" />
+    </svg>
+);
+
 
 // Sample physics topics for autocomplete
 export const PHYSICS_TOPICS = [

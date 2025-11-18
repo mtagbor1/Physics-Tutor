@@ -8,8 +8,8 @@ interface TabsProps {
 }
 
 const tabOptions = [
-    { id: Tab.Define, label: 'Define Term', icon: <DefineIcon /> },
     { id: Tab.Explain, label: 'Explain Topic', icon: <ExplainIcon /> },
+    { id: Tab.Define, label: 'Define Term', icon: <DefineIcon /> },
     { id: Tab.Analogy, label: 'Get Analogy', icon: <AnalogyIcon /> },
     { id: Tab.Problem, label: 'Create Problem', icon: <ProblemIcon /> },
     { id: Tab.Quiz, label: 'Generate Quiz', icon: <QuizIcon /> },

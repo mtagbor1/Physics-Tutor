@@ -1,4 +1,3 @@
-
 // FIX: Implemented the Gemini API service.
 import { GoogleGenAI, Type, Modality } from "@google/genai";
 import { QuizQuestion, PracticeProblem, LessonPlan } from '../types';
@@ -8,9 +7,9 @@ const ai = new GoogleGenAI({ apiKey: process.env.API_KEY! });
 export const defineTerm = async (term: string, persona: string): Promise<string> => {
   const response = await ai.models.generateContent({
     model: 'gemini-2.5-flash',
-    contents: `Define the physics term: "${term}". Provide a concise and easy-to-understand definition.`,
+    contents: `Define the physics term: "${term}". The definition must be extremely precise, short, and straight to the point.`,
     config: {
-        systemInstruction: `You are an AI assistant. ${persona}. Your definitions should be clear, accurate, and straight to the point. Use markdown for formatting.`
+        systemInstruction: `You are an AI assistant. ${persona}. Your definitions should be clear, accurate, and straight to the point. Keep the response as short as possible while remaining accurate. Use markdown for formatting.`
     }
   });
   return response.text;
@@ -19,9 +18,9 @@ export const defineTerm = async (term: string, persona: string): Promise<string>
 export const explainTopic = async (topic: string, persona: string): Promise<string> => {
   const response = await ai.models.generateContent({
     model: 'gemini-2.5-pro',
-    contents: `Explain the physics topic "${topic}" to me.`,
+    contents: `Explain the physics topic "${topic}". The explanation must be precise, short, and straight to the point. Avoid long introductions or verbose language.`,
     config: {
-        systemInstruction: `You are an AI assistant. ${persona}. Explain concepts clearly and concisely. Use markdown for formatting.`
+        systemInstruction: `You are an AI assistant. ${persona}. Explain concepts clearly, concisely, and directly. Keep the explanation as short as possible without sacrificing critical information. Use markdown for formatting.`
     }
   });
   return response.text;
@@ -84,7 +83,7 @@ const quizSchema = {
 export const generateQuiz = async (topic: string, numQuestions: number, difficulty: string): Promise<QuizQuestion[]> => {
     const response = await ai.models.generateContent({
         model: 'gemini-2.5-pro',
-        contents: `Generate a quiz with ${numQuestions} multiple-choice questions about "${topic}". The difficulty should be ${difficulty}. Each question should have 4 options. Ensure one option is clearly the correct answer. For each question, also provide a clear and concise explanation for why the correct answer is correct.`,
+        contents: `Generate a quiz with ${numQuestions} multiple-choice questions about "${topic}". The difficulty should be ${difficulty}. Each question should have 4 options. Ensure one option is clearly the correct answer. For each question, also provide a short, precise, and straight-to-the-point explanation for why the correct answer is correct.`,
         config: {
             responseMimeType: "application/json",
             responseSchema: quizSchema,

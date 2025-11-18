@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Input } from './Input';
+import { VoiceInput } from './VoiceInput';
 
 interface AutoCompleteInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value'> {
   suggestions: string[];
@@ -79,7 +80,9 @@ export const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
         onChange={handleChange}
         onFocus={handleFocus}
         autoComplete="off"
+        className="pr-12"
       />
+      <VoiceInput onTranscript={onChange} />
       {showSuggestions && filteredSuggestions.length > 0 && (
         <ul className="absolute z-20 w-full mt-1 bg-gray-700 border border-gray-600 rounded-md shadow-lg max-h-60 overflow-y-auto">
           {filteredSuggestions.map((suggestion, index) => (

@@ -1,3 +1,4 @@
+
 // FIX: Implemented the PersonaSelector component.
 import React from 'react';
 import { Persona } from '../../constants';
@@ -19,8 +20,8 @@ export const PersonaSelector: React.FC<PersonaSelectorProps> = ({ selectedPerson
         value={selectedPersona}
         onChange={(e) => onChange(e.target.value as Persona)}
       >
-        <option value={Persona.Tutor}>Friendly Tutor (Clear & encouraging)</option>
         <option value={Persona.Expert}>Expert Physicist (Formal & technical)</option>
+        <option value={Persona.Tutor}>Friendly Tutor (Clear & encouraging)</option>
         <option value={Persona.Kid}>For a 5-year-old (Simple & uses analogies)</option>
         <option value={Persona.Storyteller}>Storyteller (Creative & narrative-driven)</option>
       </Select>
